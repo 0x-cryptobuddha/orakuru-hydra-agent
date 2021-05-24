@@ -1,0 +1,14 @@
+- hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+    - name: "Init dependencies"
+      include_tasks: init.yml
+
+    - name: "Download & Install telegraf"
+      include_tasks: telegraf.yml
+    - name: "Configure telegraf"
+      include_tasks: telegraf_modules.yml
+    - name: "Enable service for telegraf"
+      include_tasks: service.yml
+    

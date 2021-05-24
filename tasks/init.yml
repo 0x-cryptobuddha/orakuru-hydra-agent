@@ -1,0 +1,16 @@
+---
+- name: "include var"
+  include_vars: ../defaults/main.yml
+
+- name: "Update apt cache"
+  apt:
+    update_cache: yes
+    cache_valid_time: 600
+
+- name: "Install dependencies"
+  apt:
+    name:
+      - git
+      - wget
+      - curl
+    state: present

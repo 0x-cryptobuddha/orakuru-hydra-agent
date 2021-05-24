@@ -1,0 +1,15 @@
+wget https://dl.influxdata.com/telegraf/releases/telegraf_1.18.2-1_amd64.deb
+sudo dpkg -i telegraf_1.18.2-1_amd64.deb
+---
+- name: "include var"
+  include_vars: ../defaults/main.yml
+
+- name: "Download the release"
+  command: "wget -O telegraf.deb {{ binary_url }}"
+  args:
+    chdir: "/tmp"
+
+- name: "Install the agent"
+  command: "dpkg -i telegraf.deb"
+  args:
+    chdir: "/tmp"
